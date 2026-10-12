@@ -1,0 +1,410 @@
+/* ==========================================================
+   1. ESTRUCTURA GENERAL
+   ========================================================== */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.app-header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+h1 {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  margin: 0.5rem 0 0;
+  color: var(--color-text-muted);
+}
+
+/* Indicadores: cursos, horas y cruces */
+.stats {
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+}
+
+.stats div {
+  display: flex;
+  flex-direction: column-reverse; /* el número arriba, la etiqueta abajo */
+}
+
+.stats dt {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.stats dd {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-accent);
+}
+
+.stats .stat-alert dd {
+  color: var(--color-danger);
+}
+
+/* Columna lateral + cuadrícula */
+.layout {
+  display: grid;
+  gap: 1.5rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+@media (min-width: 1000px) {
+  .layout {
+    grid-template-columns: 22rem 1fr;
+    align-items: start;
+  }
+}
+
+.sidebar {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.panel {
+  padding: 1.5rem;
+  border: 1px solid var(--color-line);
+  border-radius: 0.75rem;
+  background-color: var(--color-surface);
+}
+
+.panel h2 {
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+}
+
+.empty {
+  margin: 0 0 1rem;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================
+   2. FORMULARIO
+   ========================================================== */
+.field {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.375rem;
+  margin-bottom: 1rem;
+}
+
+.field-row {
+  display: flex;
+  gap: 1rem;
+}
+
+label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--color-input-border);
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--color-accent);
+  outline: 3px solid var(--color-accent-soft);
+  outline-offset: 0;
+}
+
+.form-error {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-danger);
+}
+
+.button {
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: var(--radius);
+  background-color: var(--color-accent);
+  color: #ffffff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--color-accent-dark);
+}
+
+.button-secondary {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-text);
+  border-radius: var(--radius);
+  background-color: transparent;
+  color: var(--color-text);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button-secondary:hover {
+  background-color: var(--color-text);
+  color: var(--color-surface);
+}
+
+.text-button {
+  justify-self: start;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--color-danger);
+  font: inherit;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ==========================================================
+   3. PANEL DE CRUCES
+   ========================================================== */
+.conflict-panel p {
+  margin: 0;
+}
+
+.conflict-panel-ok {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-soft);
+}
+
+.conflict-panel-ok h2 {
+  margin-bottom: 0.25rem;
+  color: var(--color-accent-dark);
+}
+
+.conflict-panel-alert {
+  border-color: var(--color-danger);
+  background-color: var(--color-danger-soft);
+}
+
+.conflict-panel-alert h2 {
+  color: var(--color-danger);
+}
+
+.conflict-list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.95rem;
+}
+
+/* ==========================================================
+   4. LISTA DE CLASES
+   ========================================================== */
+.session-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.session-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--color-line);
+}
+
+.session-item:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.color-dot {
+  flex-shrink: 0;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+}
+
+.session-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.session-course {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.session-meta {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.tag-conflict {
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+  background-color: var(--color-danger-soft);
+  color: var(--color-danger);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.delete-button {
+  padding: 0.375rem 0.625rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  background-color: transparent;
+  color: var(--color-text-muted);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+/* ==========================================================
+   5. CUADRÍCULA SEMANAL
+   ========================================================== */
+.grid-panel {
+  min-width: 0; /* permite que el contenido se desplace en vez de desbordar */
+}
+
+.week-scroll {
+  overflow-x: auto;
+}
+
+.week-grid {
+  display: grid;
+  grid-template-columns: 3.5rem repeat(6, minmax(6.5rem, 1fr));
+  min-width: 44rem;
+}
+
+.week-day-name {
+  padding-bottom: 0.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.week-hours {
+  position: relative;
+}
+
+.week-hour {
+  position: absolute;
+  right: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+  transform: translateY(-0.5em);
+}
+
+/* Cada columna dibuja sus líneas de hora con un degradado que se repite */
+.week-column {
+  position: relative;
+  border-left: 1px solid var(--color-line);
+  background-image: linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+}
+
+.week-column:last-child {
+  border-right: 1px solid var(--color-line);
+}
+
+/* Bloque de una clase: su posición la calcula WeekGrid.jsx */
+.class-block {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding: 0.375rem 0.5rem;
+  overflow: hidden;
+  border: 1px solid var(--color-surface);
+  border-left: 4px solid var(--course-border);
+  border-radius: 0.375rem;
+  background-color: var(--course-bg);
+  font-size: 0.8rem;
+  line-height: 1.25;
+}
+
+.class-name {
+  font-weight: 600;
+  overflow-wrap: break-word;
+}
+
+/* Bloque angosto (comparte el espacio con otra clase que se cruza):
+   el nombre se corta con "..." y se oculta el aula */
+.class-block.is-narrow .class-name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.class-block.is-narrow .class-room {
+  display: none;
+}
+
+.class-time,
+.class-room {
+  color: var(--color-text-muted);
+}
+
+/* Clase con cruce: borde rojo */
+.class-block.is-conflict {
+  border: 2px solid var(--color-danger);
+  border-left-width: 4px;
+}
+
+/* ==========================================================
+   6. PIE DE PÁGINA Y CELULARES
+   ========================================================== */
+.app-footer {
+  padding-bottom: 2rem;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.app-footer p {
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .stats {
+    gap: 1.25rem;
+  }
+
+  .panel {
+    padding: 1.25rem;
+  }
+}
